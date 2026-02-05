@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lims-consumer-ingress
+  namespace: leaf-image-management-system
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /ping
+            pathType: Prefix
+            backend:
+              service:
+                name: lims-consumer
+                port:
+                  number: 80
+
+          - path: /image-plant
+            pathType: Prefix
+            backend:
+              service:
+                name: lims-consumer
+                port:
+                  number: 80

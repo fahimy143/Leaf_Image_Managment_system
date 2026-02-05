@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lims-consumer
+  namespace: leaf-image-management-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lims-consumer
+  template:
+    metadata:
+      labels:
+        app: lims-consumer
+    spec:
+      containers:
+        - name: lims-consumer
+          image: europe-west4-docker.pkg.dev/a12437815/lims-repo/lims-consumer:task2
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: consumer-config
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"

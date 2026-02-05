@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consumer-config
+  namespace: leaf-image-management-system
+data:
+  BOOTSTRAP: "kafka-service.leaf-image-management-system.svc.cluster.local:9092"
+  TOPIC: "potato"
+  GROUP: "lims-consumer-potato"
+  MONGO_URI: "mongodb://mongodb-consumer.leaf-image-management-system.svc.cluster.local:27017"
+  MONGO_DB: "imagedbplantconsumer"
+  MONGO_COLL: "imagecolplantpotato"
